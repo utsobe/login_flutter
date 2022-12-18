@@ -58,7 +58,40 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.black,
               fontSize: 28.0,
             ),
-          )
+          ),
+          Text(
+            'Login to Your App',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 44.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 44.0,
+          ),
+          TextField(
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+                hintText: "User Email",
+                prefixIcon: Icon(
+                  Icons.mail,
+                  color: Colors.black,
+                )),
+          ),
+          SizedBox(
+            height: 26.0,
+          ),
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              hintText: "User Password",
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Colors.black,
+              ),
+            ),
+          ),
         ],
       ),
     );
