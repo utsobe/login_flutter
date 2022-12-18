@@ -52,14 +52,14 @@ class _LoginScreenState extends State<LoginScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'MyApp Title',
             style: TextStyle(
               color: Colors.black,
               fontSize: 28.0,
             ),
           ),
-          Text(
+          const Text(
             'Login to Your App',
             style: TextStyle(
               color: Colors.black,
@@ -67,10 +67,10 @@ class _LoginScreenState extends State<LoginScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 44.0,
           ),
-          TextField(
+          const TextField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
                 hintText: "User Email",
@@ -79,10 +79,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Colors.black,
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             height: 26.0,
           ),
-          TextField(
+          const TextField(
             obscureText: true,
             decoration: InputDecoration(
               hintText: "User Password",
@@ -92,6 +92,37 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
+          const SizedBox(
+            height: 12.0,
+          ),
+          const Text(
+            "Don't Remember your Password",
+            style: TextStyle(
+              color: Colors.blue,
+            ),
+          ),
+          const SizedBox(
+            height: 88.0,
+          ),
+          Container(
+            width: double.infinity,
+            child: RawMaterialButton(
+              fillColor: Color(0xFF0069FE),
+              elevation: 0.0,
+              padding: EdgeInsets.symmetric(vertical: 20.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              onPressed: () {},
+              child: Text(
+                "Login",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
