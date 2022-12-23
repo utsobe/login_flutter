@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -44,6 +47,25 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  void login(String email, String password) async {
+    var url = Uri.parse(
+        'https://devapi01.hudhud.my/api/v4/buyers/login?platform=web');
+    var payload = {'username': email, 'fb_token': '', 'password': password};
+
+    var body = (payload);
+
+    var response = await http.Client().post(url, body: body);
+
+    print(response.body);
+
+    if (response.statusCode == 200) {
+      print('Login Succeed');
+    } else {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -70,7 +92,8 @@ class _LoginScreenState extends State<LoginScreen> {
           const SizedBox(
             height: 44.0,
           ),
-          const TextField(
+          TextField(
+            controller: emailController,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
                 hintText: "User Email",
@@ -82,7 +105,8 @@ class _LoginScreenState extends State<LoginScreen> {
           const SizedBox(
             height: 26.0,
           ),
-          const TextField(
+          TextField(
+            controller: passwordController,
             obscureText: true,
             decoration: InputDecoration(
               hintText: "User Password",
@@ -113,7 +137,11 @@ class _LoginScreenState extends State<LoginScreen> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12.0),
               ),
-              onPressed: () {},
+              onPressed: () {
+                print(emailController.text);
+                print(passwordController.text);
+                login(emailController.text, passwordController.text);
+              },
               child: Text(
                 "Login",
                 style: TextStyle(
